@@ -1,0 +1,18 @@
+paso,columna,accion,filas_afectadas,justificacion
+paso_3,asistencia_pct,convertir a numérico,202,Se removió el símbolo de porcentaje y se transformaron los guiones en nulos reales.
+paso_3,horas_trabajo_semana,convertir a numérico,2822,Se cambiaron los faltantes disfrazados (-) por nulos reales de tipo numérico.
+paso_3,distancia_km,reemplazar 999 por nulo,152,Se identificó el valor disfrazado 999 y se reemplazó por un nulo real.
+paso_4,programa,normalizar y unificar variantes,260,"Se unificaron mayúsculas, espacios y tildes de programa contra la lista de valores válidos."
+paso_4,jornada,normalizar y unificar variantes,485,"Se unificaron mayúsculas, espacios y tildes de jornada contra la lista de valores válidos."
+paso_4,genero,normalizar abreviaturas y variantes,559,"Se unificaron mayúsculas, espacios y tildes de genero contra la lista de valores válidos."
+paso_4,ciudad_procedencia,normalizar y unificar variantes,542,"Se unificaron mayúsculas, espacios y tildes de ciudad_procedencia contra la lista de valores válidos."
+paso_5,fecha_matricula,unificar formatos de fecha,3052,Se unificaron los formatos mixtos (AAAA-MM-DD y DD/MM/AAAA) convirtiéndolos a un tipo datetime homogéneo.
+paso_6,todas,eliminar filas duplicadas,150,"Se eliminaron las filas completamente idénticas para evitar sesgos y duplicidad en el análisis, reiniciando el índice."
+paso_7,promedio_acumulado,eliminar filas con nulos,298,"Una nota académica no se puede inventar ni imputar arbitrariamente, por lo que se eliminaron las filas con promedio nulo."
+paso_7,ciudad_procedencia,reemplazar nulos por etiqueta,96,Se rellenaron los nulos con 'Sin dato' para conservar la información demográfica sin descartar registros completos.
+paso_7,tipo_colegio,reemplazar nulos por etiqueta,145,Se rellenaron los nulos con 'Sin dato' para mantener el tamaño de la muestra y evitar la pérdida de filas innecesarias.
+paso_8,promedio_acumulado,convertir valores imposibles a nulo y eliminar,15,Se detectaron promedios mayores a 5 debido a errores de escala; se anularon y eliminaron por tratarse de notas académicas que no se pueden inventar.
+paso_8,edad,imputar valores imposibles de edad por la mediana,12,Se identificaron edades ilógicas (como 150 años) y se reemplazaron por la mediana poblacional para conservar el registro del estudiante.
+paso_8,horas_trabajo_semana,ajustar horas de trabajo por reglas lógicas,29,Se establecieron en 0 las horas de los estudiantes que no trabajan y se corrigieron valores superiores a 100 horas usando la mediana del grupo trabajador.
+paso_9,desertor,crear variable booleana,9687,Se creó la columna booleana 'desertor' (True/False) para calcular fácilmente proporciones y tasas de abandono mediante el promedio.
+paso_9,cuartil_asistencia,crear cuartiles con pd.qcut,9687,Se segmentó la asistencia_pct en cuatro grupos de tamaño equivalente (Q1 a Q4) para evaluar la tendencia de deserción por niveles.
